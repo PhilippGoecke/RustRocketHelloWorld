@@ -32,6 +32,6 @@ COPY main.rs src/main.rs
 
 EXPOSE 8000
 
-CMD ['cargo', 'run']
+CMD ["cargo", "run"]
 
 HEALTHCHECK CMD curl -f "http://localhost:8000" || exit 1
