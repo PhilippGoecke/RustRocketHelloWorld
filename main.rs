@@ -1,9 +1,8 @@
 #[macro_use] extern crate rocket;
 
 #[get("/?<name>")]
-use rocket::config::Config;
 fn index(name: Option<&str>) -> String {
-  let version = "0.5.0";
+  use rocket::config::Config;
   format!("Hello, {}!<br>(Rocket v{})", name.unwrap_or("world"), Config::release())
 }
 
