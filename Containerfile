@@ -1,12 +1,12 @@
-FROM debian:bookworm-slim as build-env
+FROM debian:trixie-slim as build-env
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt upgrade -y \
   # install tools
-  && apt install -y --no-install-recommends gcc libc6-dev curl ca-certificates \
+  && apt install -y --no-install-recommends --no-install-suggests gcc libc6-dev curl ca-certificates \
   # install rocket/rust dependencies
-  && apt install -y --no-install-recommends pkg-config libssl-dev \
+  && apt install -y --no-install-recommends --no-install-suggests pkg-config libssl-dev \
   # make image smaller
   && rm -rf "/var/lib/apt/lists/*" \
   && rm -rf /var/cache/apt/archives
