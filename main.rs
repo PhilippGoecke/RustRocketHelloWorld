@@ -2,8 +2,7 @@
 
 #[get("/?<name>")]
 fn index(name: Option<&str>) -> String {
-  use rocket::config::Config;
-  format!("Hello, {}!<br>(Rocket v{})", name.unwrap_or("world"), rocket::version().unwrap_or("unknown"))
+  format!("Hello, {}!", name.unwrap_or("World"))
 }
 
 #[launch]
