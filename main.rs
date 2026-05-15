@@ -22,7 +22,7 @@ fn index(name: Option<&str>) -> String {
         .map(|s| s.trim().to_string())
         .unwrap_or_else(|| "unknown".to_string());
 
-    let rocket_version = format!("rocket {}", rocket::Config::default().to_string().lines().next().unwrap_or(""));
+    let rocket_version = format!("rocket {}", format!("{:?}", rocket::Config::default()).lines().next().unwrap_or(""));
     // Prefer the compile-time crate version of rocket via Cargo metadata env var.
     let rocket_version = option_env!("CARGO_PKG_DEPENDENCIES_ROCKET")
         .map(|v| format!("rocket {}", v))
