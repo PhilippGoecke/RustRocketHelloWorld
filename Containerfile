@@ -11,9 +11,15 @@ RUN apt update && apt upgrade -y \
   && rm -rf "/var/lib/apt/lists/*" \
   && rm -rf /var/cache/apt/archives
 
+# add user and set home directory
+ARG USER=rust
+RUN useradd --create-home --shell /bin/bash $USER
+ARG HOME="/home/$USER"
+WORKDIR $HOME
+USER $USER
+
 ENV ROCKET_ADDRESS=0.0.0.0
 ENV ROCKET_PORT=8000
-ENV PATH=/root/.cargo/bin:$PATH
 
 RUN rustup default stable
 
