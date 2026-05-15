@@ -6,12 +6,10 @@ RUN apt update && apt upgrade -y \
   # install tools
   && apt install -y --no-install-recommends --no-install-suggests gcc libc6-dev curl ca-certificates \
   # install rocket/rust dependencies
-  && apt install -y --no-install-recommends --no-install-suggests pkg-config libssl-dev \
+  && apt install -y --no-install-recommends --no-install-suggests pkg-config libssl-dev rustup \
   # make image smaller
   && rm -rf "/var/lib/apt/lists/*" \
   && rm -rf /var/cache/apt/archives
-
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 ENV ROCKET_ADDRESS=0.0.0.0
 ENV ROCKET_PORT=8000
